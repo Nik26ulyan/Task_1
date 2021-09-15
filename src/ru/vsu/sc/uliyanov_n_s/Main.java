@@ -1,39 +1,41 @@
 package ru.vsu.sc.uliyanov_n_s;
 
+import com.sun.org.apache.xpath.internal.objects.XString;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        StartWriteMethod();
+        printSomething("Enter 3 integer numbers:");
 
-        int num1 = ReadNumMethod();
-        int num2 = ReadNumMethod();
-        int num3 = ReadNumMethod();
+        int num1 = readNumForComparison("first");
+        int num2 = readNumForComparison("second");
+        int num3 = readNumForComparison("third");
 
-        int firstPairMax = FindMaxValueInPair(num1, num2);
-        int secondPairMax = FindMaxValueInPair(num2, num3);
-        int maxNum = FindMaxValueInPair(firstPairMax, secondPairMax);
+        int firstPairMax = findMaxValueInPair(num1, num2);
+        int secondPairMax = findMaxValueInPair(num2, num3);
+        int maxNum = findMaxValueInPair(firstPairMax, secondPairMax);
 
-        int firstPairMin = FindMinValueInPair(num1, num2);
-        int secondPairMin = FindMinValueInPair(num2, num3);
-        int minNum = FindMinValueInPair(firstPairMin, secondPairMin);
+        int firstPairMin = findMinValueInPair(num1, num2);
+        int secondPairMin = findMinValueInPair(num2, num3);
+        int minNum = findMinValueInPair(firstPairMin, secondPairMin);
 
-        int averageNum = FindAverageNumb(num1, num2, num3, minNum, maxNum);
+        int averageNum = findAverageNumb(num1, num2, num3, minNum, maxNum);
 
-        FinalWriteMethod(averageNum);
+        printResult(averageNum);
     }
 
-    static int FindAverageNumb(int a, int b, int c, int d, int e) {
+    static int findAverageNumb(int a, int b, int c, int d, int e) {
         return a + b + c - (d + e);
     }
 
-    static int FindMaxValueInPair(int a, int b) {
+    static int findMaxValueInPair(int a, int b) {
         return (a + b) / 2 + CalcModuleMethod(a - b) / 2;
     }
 
-    static int FindMinValueInPair(int a, int b) {
+    static int findMinValueInPair(int a, int b) {
         return (a + b) / 2 - CalcModuleMethod(a - b) / 2;
     }
 
@@ -41,16 +43,29 @@ public class Main {
         return (int) Math.sqrt(a * a);
     }
 
-    static void StartWriteMethod() {
-        System.out.println("Enter 3 integer numbers:");
+    static void printSomething(String text){
+        System.out.println();
     }
 
-    static void FinalWriteMethod(int a) {
+    static void printResult(int a) {
         System.out.print("Average number is " + a);
     }
 
-    static int ReadNumMethod() {
+    static int readNumForComparison(String text) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the " + text + " number");
+        return scanner.nextInt();
+    }
+
+    static int readNum2() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter second number");
+        return scanner.nextInt();
+    }
+
+    static int readNum3() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter third number");
         return scanner.nextInt();
     }
 }
