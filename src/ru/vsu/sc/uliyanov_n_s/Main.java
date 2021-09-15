@@ -26,7 +26,7 @@ public class Main {
 
         int averageNum = (nums[0] + nums[1] + nums[2]) - (minNum + maxNum);
 
-        System.out.printf("Average number is %1d, max number is %2d, min number is %3d", averageNum, maxNum, minNum);
+        System.out.print("Average number is " + averageNum);
     }
 
     public static int findMaxValue(int a, int b) {
@@ -37,7 +37,7 @@ public class Main {
         return (a + b)/2 - mod(a - b)/2 ;
     }
 
-    public static int mod(int a) {          //Не использую функция Math.abs() т.к. там используется условный оператор
+    public static int mod(int a) {          //Не использую функция Math.abs() т.к. там используется условный оператор.
         return (int) Math.sqrt(a * a);
     }
 
