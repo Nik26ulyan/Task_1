@@ -37,7 +37,7 @@ public class Main {
         return (a + b)/2 - mod(a - b)/2 ;
     }
 
-    public static int mod(int a) {          //Не использую функция Math.abs() т.к. там используется условный оператор.
+    public static int mod(int a) {          //Не использую функцию Math.abs() т.к. там используется условный оператор.
         return (int) Math.sqrt(a * a);
     }
 
