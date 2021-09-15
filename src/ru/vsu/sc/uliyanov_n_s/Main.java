@@ -5,43 +5,51 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        int[] nums = new int[3];
 
-        System.out.println("Enter 3 numbers:");
-        for (int i = 0; i < 3; i++){
-            nums[i] = readNum();
-        }
+        StartWriteMethod();
 
-        int firstPairMax = findMaxValue(nums[0], nums[1]);
-        int secondPairMax = findMaxValue(nums[1], nums[2]);
-        int maxNum = findMaxValue(firstPairMax, secondPairMax);
+        int num1 = ReadNumMethod();
+        int num2 = ReadNumMethod();
+        int num3 = ReadNumMethod();
 
-        int firstPairMin = findMinValue(nums[0], nums[1]);
-        int secondPairMin = findMinValue(nums[1], nums[2]);
-        int minNum = findMinValue(firstPairMin, secondPairMin);
+        int firstPairMax = FindMaxValueInPair(num1, num2);
+        int secondPairMax = FindMaxValueInPair(num2, num3);
+        int maxNum = FindMaxValueInPair(firstPairMax, secondPairMax);
 
-        int averageNum = findAverageNumb(nums[0], nums[1], nums[2], minNum, maxNum);
+        int firstPairMin = FindMinValueInPair(num1, num2);
+        int secondPairMin = FindMinValueInPair(num2, num3);
+        int minNum = FindMinValueInPair(firstPairMin, secondPairMin);
 
-        System.out.print("Average number is " + averageNum);
+        int averageNum = FindAverageNumb(num1, num2, num3, minNum, maxNum);
+
+        FinalWriteMethod(averageNum);
     }
 
-    static int findAverageNumb(int a, int b, int c, int d, int e) {
+    static int FindAverageNumb(int a, int b, int c, int d, int e) {
         return a + b + c - (d + e);
     }
 
-    static int findMaxValue(int a, int b) {
-        return (a + b)/2 + mod(a - b)/2 ;
+    static int FindMaxValueInPair(int a, int b) {
+        return (a + b) / 2 + CalcModuleMethod(a - b) / 2;
     }
 
-    static int findMinValue(int a, int b) {
-        return (a + b)/2 - mod(a - b)/2 ;
+    static int FindMinValueInPair(int a, int b) {
+        return (a + b) / 2 - CalcModuleMethod(a - b) / 2;
     }
 
-    static int mod(int a) {          //Не использую функцию Math.abs() т.к. там есть условный оператор.
+    static int CalcModuleMethod(int a) {          //Не использую функцию Math.abs() т.к. там есть условный оператор.
         return (int) Math.sqrt(a * a);
     }
 
-    static int readNum() {
+    static void StartWriteMethod() {
+        System.out.println("Enter 3 integer numbers:");
+    }
+
+    static void FinalWriteMethod(int a) {
+        System.out.print("Average number is " + a);
+    }
+
+    static int ReadNumMethod() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
