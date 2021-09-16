@@ -51,6 +51,13 @@ public class Main {
     static int readNumForCompare(String text) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the " + text + " number:");
-        return scanner.nextInt();
+        int a;
+        if (scanner.hasNextInt())
+            a = scanner.nextInt();
+        else {
+            System.out.println("Invalid value! Try again.");
+            return readNumForCompare(text);
+        }
+        return a;
     }
 }
